@@ -1,4 +1,6 @@
-﻿using Eviivo.Web.Models;
+﻿using Eviivo.Domain;
+using Eviivo.Web.Models;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,25 +9,42 @@ using System.Threading.Tasks;
 
 namespace Eviivo.Web.Actions
 {
-    class StringMatchAction<T> where T : class
+    public class StringMatchAction<T> where T : class
     {
+        private ILogger logger;
+        private IStringMatch stringMatch;
+
+        public StringMatchAction(ILogger logger, IStringMatch stringMatch)
+        {
+            this.stringMatch = stringMatch;
+            this.logger = logger;
+        }
+
         public Func<StringMatchViewModel, T> OnComplete { get; set; }
 
         public Func<T> OnFailed { get; set;}
 
         public T Execute(StringMatchViewModel model)
         {
-            var output = new Domain.Class1().Match(model.Text, model.SubText);
+            try
+            {
+                var output = stringMatch.Match(model.Text, model.SubText);
 
-            if (output.Any())
-            {
-                model.Output = output;
+                if (output.Any())
+                {
+                    model.Output = output;
+                }
+                else
+                {
+                    model.ErrorMessage = "Some error";
+                }
+                return OnComplete(model);
             }
-            else
+            catch(Exception ex)
             {
-                model.ErrorMessage = "Some error";
+                logger.Log(LogLevel.Fatal, "Error getting substring positions", ex);
+                return OnFailed();
             }
-            return OnComplete(model);
         }
     }
 }

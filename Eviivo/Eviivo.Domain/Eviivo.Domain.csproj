@@ -40,9 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Models\SubtextModel.cs" />
-    <Compile Include="Models\TextModel.cs" />
+    <Compile Include="HelperClasses\StringHelperClass.cs" />
+    <Compile Include="IStringMatch.cs" />
+    <Compile Include="StringMatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
