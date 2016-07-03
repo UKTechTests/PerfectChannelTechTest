@@ -39,6 +39,7 @@ namespace Eviivo.Domain
                             positons.Add(count);
                             subTextPosition = 0;
                             count = 0;
+                            charPosition--;
                         }
                     }
                     else

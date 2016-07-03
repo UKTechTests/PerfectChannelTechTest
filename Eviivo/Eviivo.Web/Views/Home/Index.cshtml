@@ -10,7 +10,7 @@
 </div>
 
 <div class="row">
-    @using (Html.BeginForm("Match", "String"))
+    @using (Html.BeginForm("Match", "String",FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
@@ -27,7 +27,18 @@
             @Html.ValidationMessageFor(x => x.Text)
         </div>
 
-        <input type="submit" value="Compare"/>
+        <input type="submit" value="Compare" />
+
+        <div>
+            @if (Model != null && Model.Output != null && Model.Output.Any())
+            {
+                <h1>Output</h1>
+                foreach(var output in Model.Output)
+                {
+                    @output <span>,</span>
+                }
+            }
+        </div>
     }
 </div>
 

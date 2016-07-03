@@ -1,4 +1,5 @@
-﻿using Eviivo.Web.Models;
+﻿using Eviivo.Web.Actions;
+using Eviivo.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace Eviivo.Web.Controllers
 {
     public class StringController : Controller
     {
+        [HttpPost]
         // GET: String
         public ActionResult Match(StringMatchViewModel model)
         {
@@ -16,7 +18,13 @@ namespace Eviivo.Web.Controllers
             {
                 return View("~/views/home/index.cshtml", model);
             }
-            return View();
+            else
+            {
+                return new StringMatchAction<ActionResult>()
+                {
+                    OnComplete = (m) => View("~/views/home/index.cshtml", m)
+                }.Execute(model);
+            }
         }
     }
 }

@@ -9,13 +9,23 @@ namespace Eviivo.Web.Actions
 {
     class StringMatchAction<T> where T : class
     {
-        Func<StringMatchViewModel, T> OnComplete { get; set; }
+        public Func<StringMatchViewModel, T> OnComplete { get; set; }
 
-        Func<T> OnFailed { get; set;}
+        public Func<T> OnFailed { get; set;}
 
         public T Execute(StringMatchViewModel model)
         {
-            return OnComplete(new StringMatchViewModel());
+            var output = new Domain.Class1().Match(model.Text, model.SubText);
+
+            if (output.Any())
+            {
+                model.Output = output;
+            }
+            else
+            {
+                model.ErrorMessage = "Some error";
+            }
+            return OnComplete(model);
         }
     }
 }

@@ -9,6 +9,11 @@ namespace Eviivo.Web.Models
 {
     public class StringMatchViewModel
     {
+        public StringMatchViewModel()
+        {
+            Output = new List<int>();
+        }
+
         [Display(Name = "Text")]
         [DataType(DataType.Text)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "You need to enter some text.")]
@@ -18,5 +23,7 @@ namespace Eviivo.Web.Models
         [DataType(DataType.Text)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "You need to enter some text.")]
         public string SubText { get; set; }
+        public IList<int> Output { get; internal set; }
+        public string ErrorMessage { get; internal set; }
     }
 }
