@@ -10,43 +10,43 @@ namespace Eviivo.Domain
     {
         public IList<int> Match(string text, string subtext)
         {
-            int count = 0;
-                       
-            text = ConvertToUpperCase(text);
-            subtext = ConvertToUpperCase(subtext);
-
-            var subTextChars = ToCharArray(subtext);
-            var textChars = ToCharArray(text);
-
-            var subtextLength = LengthOf(subtext);
-            var textLength = LengthOf(text);
-
+            var subTextArray = SplitString(subtext);
             var positons = new List<int>();
 
-            var match = false;
-
-            int subTextPosition = 0;
-
-            for (int charPosition = 1; charPosition <= textLength; charPosition++)
+            foreach (var part in subTextArray)
             {
-                if (textChars[charPosition -1] == subTextChars[subTextPosition])
-                {
-                    count = count == 0 ? charPosition : count;
-                    subTextPosition++;
+                int count = 0;
+                //text = ConvertToUpperCase(text);
+                //subtext = ConvertToUpperCase(subtext);
 
-                    if (subTextPosition == subtextLength)
+                var subTextChars = ToCharArray(part);
+                var textChars = ToCharArray(text);
+
+                var subtextLength = LengthOf(part);
+                var textLength = LengthOf(text);
+
+                int subTextPosition = 0;
+
+                for (int charPosition = 1; charPosition <= textLength; charPosition++)
+                {
+                    if (textChars[charPosition - 1] == subTextChars[subTextPosition])
                     {
-                        positons.Add(count);
+                        count = count == 0 ? charPosition : count;
+                        subTextPosition++;
+
+                        if (subTextPosition == subtextLength)
+                        {
+                            positons.Add(count);
+                            subTextPosition = 0;
+                            count = 0;
+                        }
+                    }
+                    else
+                    {
+
                         subTextPosition = 0;
                         count = 0;
                     }
-                }
-                else
-                {
-
-                    subTextPosition = 0;
-                    count = 0;
-                    match = false;
                 }
             }
 
@@ -89,6 +89,36 @@ namespace Eviivo.Domain
             }
 
             return count;
+        }
+
+        private static List<string> SplitString(string input)
+        {
+            var result = new List<string>();
+
+
+            string arrayElement = null;
+
+            foreach (var character in input)
+            {
+                if (char.IsLetter(character))
+                {
+                    arrayElement += character;
+                }
+
+                if (!char.IsLetter(character) && arrayElement != null)
+                {
+                    result.Add(arrayElement);
+                    arrayElement = null;
+                }
+
+            }
+
+            if(arrayElement != null)
+            {
+                result.Add(arrayElement);
+            }
+
+            return result;
         }
     }
 }
