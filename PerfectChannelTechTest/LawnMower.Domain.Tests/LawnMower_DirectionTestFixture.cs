@@ -17,7 +17,7 @@ namespace LawnMower.Domain.Tests
                 Direction = Directions.North
             };
 
-            lawnMower.Direction = LawnMower.ChangeDirection("L", lawnMower.Direction);
+            lawnMower.Direction = new LawnMower().ChangeDirection("L", lawnMower.Direction);
 
             Assert.AreEqual(lawnMower.Direction, Directions.West);
         }
@@ -31,7 +31,7 @@ namespace LawnMower.Domain.Tests
                 Direction = Directions.West
             };
 
-            lawnMower.Direction = LawnMower.ChangeDirection("L", lawnMower.Direction);
+            lawnMower.Direction = new LawnMower().ChangeDirection("L", lawnMower.Direction);
 
             Assert.AreEqual(lawnMower.Direction, Directions.South);
         }
@@ -45,7 +45,7 @@ namespace LawnMower.Domain.Tests
                 Direction = Directions.South
             };
 
-            lawnMower.Direction = LawnMower.ChangeDirection("L", lawnMower.Direction);
+            lawnMower.Direction = new LawnMower().ChangeDirection("L", lawnMower.Direction);
 
             Assert.AreEqual(lawnMower.Direction, Directions.East);
         }
@@ -59,7 +59,7 @@ namespace LawnMower.Domain.Tests
                 Direction = Directions.East
             };
 
-            lawnMower.Direction = LawnMower.ChangeDirection("L", lawnMower.Direction);
+            lawnMower.Direction = new LawnMower().ChangeDirection("L", lawnMower.Direction);
 
             Assert.AreEqual(lawnMower.Direction, Directions.North);
         }
@@ -73,7 +73,7 @@ namespace LawnMower.Domain.Tests
                 Direction = Directions.North
             };
 
-            lawnMower.Direction = LawnMower.ChangeDirection("L", lawnMower.Direction);
+            lawnMower.Direction = new LawnMower().ChangeDirection("L", lawnMower.Direction);
 
             Assert.AreEqual(lawnMower.Direction, Directions.West);
         }
@@ -87,7 +87,7 @@ namespace LawnMower.Domain.Tests
                 Direction = Directions.West
             };
 
-            lawnMower.Direction = LawnMower.ChangeDirection("R", lawnMower.Direction);
+            lawnMower.Direction = new LawnMower().ChangeDirection("R", lawnMower.Direction);
 
             Assert.AreEqual(lawnMower.Direction, Directions.North);
         }
@@ -101,7 +101,7 @@ namespace LawnMower.Domain.Tests
                 Direction = Directions.South
             };
 
-            lawnMower.Direction = LawnMower.ChangeDirection("R", lawnMower.Direction);
+            lawnMower.Direction = new LawnMower().ChangeDirection("R", lawnMower.Direction);
 
             Assert.AreEqual(lawnMower.Direction, Directions.West);
         }
@@ -115,7 +115,7 @@ namespace LawnMower.Domain.Tests
                 Direction = Directions.East
             };
 
-            lawnMower.Direction = LawnMower.ChangeDirection("R", lawnMower.Direction);
+            lawnMower.Direction = new LawnMower().ChangeDirection("R", lawnMower.Direction);
 
             Assert.AreEqual(lawnMower.Direction, Directions.South);
         }

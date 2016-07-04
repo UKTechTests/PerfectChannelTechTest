@@ -23,7 +23,7 @@ namespace LawnMower.Domain.Tests
                 Position = new GeoCoordinate(2, longitude)
             };
 
-            lawnMower = LawnMower.MoveForward(lawnMower);
+            lawnMower = new LawnMower().MoveForward(lawnMower);
 
             Assert.AreEqual(lawnMower.Position.Longitude, longitude+=1);
         }
@@ -38,7 +38,7 @@ namespace LawnMower.Domain.Tests
                 Position = new GeoCoordinate(2, longitude)
             };
 
-            lawnMower = LawnMower.MoveForward(lawnMower);
+            lawnMower = new LawnMower().MoveForward(lawnMower);
 
             Assert.AreEqual(lawnMower.Position.Longitude, longitude-=1);
         }
@@ -53,7 +53,7 @@ namespace LawnMower.Domain.Tests
                 Position = new GeoCoordinate(latitude, 5)
             };
 
-            lawnMower = LawnMower.MoveForward(lawnMower);
+            lawnMower = new LawnMower().MoveForward(lawnMower);
 
             Assert.AreEqual(lawnMower.Position.Latitude, latitude+=1);
         }
@@ -68,7 +68,7 @@ namespace LawnMower.Domain.Tests
                 Position = new GeoCoordinate(latitude, 5)
             };
 
-            lawnMower = LawnMower.MoveForward(lawnMower);
+            lawnMower = new LawnMower().MoveForward(lawnMower);
 
             Assert.AreEqual(lawnMower.Position.Latitude, latitude-=1);
         }

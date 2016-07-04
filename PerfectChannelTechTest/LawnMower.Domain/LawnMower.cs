@@ -10,28 +10,17 @@ namespace LawnMower.Domain
 {
     public class LawnMower
     {
-        public static new List<LawnMowerModel> Lawnmowers = new List<LawnMowerModel>();
+        private IDictionary<Directions, Action> LawnmowerMovementStratergy;
 
-        public static void AddLawnMower(double latitude, double longitude, Directions directions)
+        private IDictionary<Directions, Func<Directions>> LawnmowerDirectionStratergy;
+        
+                
+        public LawnMowerModel MoveForward(LawnMowerModel lawnmower)
         {
-            Lawnmowers.Add(new LawnMowerModel()
-            {
-                Position = new GeoCoordinate(latitude, longitude),
-                Direction = Directions.North
-            }
-            );
-        }
+            CreateLawnmowerMovementStratergy(lawnmower);
 
-        public static LawnMowerModel MoveForward(LawnMowerModel lawnmower)
-        {
-            var aaa = new Dictionary<Directions, Action>();
-            aaa.Add(Directions.North, () => { lawnmower.Position.Longitude += 1; });
-            aaa.Add(Directions.West, () => { lawnmower.Position.Latitude -= 1; });
-            aaa.Add(Directions.South, () => { lawnmower.Position.Longitude -= 1; });
-            aaa.Add(Directions.East, () => { lawnmower.Position.Latitude += 1; });
-
-            var action = aaa.ContainsKey(lawnmower.Direction) ? aaa[lawnmower.Direction] : null;
-            if(action != null)
+            var action = LawnmowerMovementStratergy.ContainsKey(lawnmower.Direction) ? LawnmowerMovementStratergy[lawnmower.Direction] : null;
+            if (action != null)
             {
                 action.Invoke();
             }
@@ -39,13 +28,26 @@ namespace LawnMower.Domain
             return lawnmower;
         }
 
-        public static Directions ChangeDirection(string direction, Directions currentDirection)
+        public Directions ChangeDirection(string direction, Directions currentDirection)
+        {
+            CreateLawnmowerDirectionStratergy(direction, currentDirection);
+
+            var action = LawnmowerDirectionStratergy.ContainsKey(currentDirection) ? LawnmowerDirectionStratergy[currentDirection] : null;
+            if (action != null)
+            {
+                currentDirection = action.Invoke();
+            }
+
+            return currentDirection;
+        }
+
+        private  Directions CreateLawnmowerDirectionStratergy(string direction, Directions currentDirection)
         {
             const string moveLeft = "L";
             const string moveRight = "R";
 
-            var directions = new Dictionary<Directions, Action>();
-            directions.Add(Directions.East, () =>
+            LawnmowerDirectionStratergy = new Dictionary<Directions, Func<Directions>>();
+            LawnmowerDirectionStratergy.Add(Directions.East, () =>
             {
                 if (direction == moveRight)
                 {
@@ -55,8 +57,10 @@ namespace LawnMower.Domain
                 {
                     currentDirection = Directions.North;
                 }
+
+                return currentDirection;
             });
-            directions.Add(Directions.North, () =>
+            LawnmowerDirectionStratergy.Add(Directions.North, () =>
             {
                 if (direction == moveRight)
                 {
@@ -66,8 +70,10 @@ namespace LawnMower.Domain
                 {
                     currentDirection = Directions.West;
                 }
+
+                return currentDirection;
             });
-            directions.Add(Directions.South, () =>
+            LawnmowerDirectionStratergy.Add(Directions.South, () =>
             {
                 if (direction == moveRight)
                 {
@@ -77,8 +83,10 @@ namespace LawnMower.Domain
                 {
                     currentDirection = Directions.East;
                 }
+
+                return currentDirection;
             });
-            directions.Add(Directions.West, () =>
+            LawnmowerDirectionStratergy.Add(Directions.West, () =>
             {
                 if (direction == moveRight)
                 {
@@ -88,20 +96,20 @@ namespace LawnMower.Domain
                 {
                     currentDirection = Directions.South;
                 }
+
+                return currentDirection;
             });
-
-            var action = directions.ContainsKey(currentDirection) ? directions[currentDirection] : null;
-            if (action != null)
-            {
-                action.Invoke();
-            }
-
             return currentDirection;
         }
 
-        public static void ChangeDirection(LawnMower lawnMower)
+        private void CreateLawnmowerMovementStratergy(LawnMowerModel lawnmower)
         {
-            throw new NotImplementedException();
+            LawnmowerMovementStratergy = new Dictionary<Directions, Action>();
+            LawnmowerMovementStratergy.Add(Directions.North, () => { lawnmower.Position.Longitude += 1; });
+            LawnmowerMovementStratergy.Add(Directions.West, () => { lawnmower.Position.Latitude -= 1; });
+            LawnmowerMovementStratergy.Add(Directions.South, () => { lawnmower.Position.Longitude -= 1; });
+            LawnmowerMovementStratergy.Add(Directions.East, () => { lawnmower.Position.Latitude += 1; });
         }
+
     }
 }
