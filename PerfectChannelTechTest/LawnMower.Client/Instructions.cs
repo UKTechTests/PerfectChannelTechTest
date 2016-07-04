@@ -1,12 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LawnMower.Domain.Model;
+using System.Device.Location;
 
 namespace LawnMower.Client
 {
-    class Instructions
+    public class Instructions
     {
+        //private LawnModel lawn = new LawnModel(new GeoCoordinate(0, 0));
+        //private IList<LawnMowerModel> lawnMowers = new List<LawnModel>;
+
+       
+
+        public void SetLawnDimensions(GeoCoordinate rightCorner)
+        {
+            //lawn.Dimensions.UpperRightCorner = rightCorner;
+        }
+
+        public void SetNumberOfLawnMowers(int numberOfMowers)
+        {
+            for(int mower = 1; mower <= numberOfMowers; mower++)
+            {
+                //lawnMowers.Add(new LawnMowerModel());
+            }
+        }
     }
 }

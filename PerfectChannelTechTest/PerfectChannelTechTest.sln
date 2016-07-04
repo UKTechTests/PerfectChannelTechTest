@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerfectChannelTechTest", "PerfectChannelTechTest\PerfectChannelTechTest.csproj", "{8972DA49-14B0-4AAD-AA75-D7173FACF9CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LawnMower.Client", "LawnMower.Client\LawnMower.Client.csproj", "{D7150010-013F-4F69-A857-3D452CDFB250}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LawnMower.Domain.Tests", "LawnMower.Domain.Tests\LawnMower.Domain.Tests.csproj", "{C2851C6F-9880-4176-B6F8-9A1757EB221B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LawnMower.Client.Tests", "LawnMower.Client.Tests\LawnMower.Client.Tests.csproj", "{D09D13C3-00A1-444F-88AC-6D58EA5FED06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LawnMower.Domain", "LawnMower.Domain\LawnMower.Domain.csproj", "{D3D6154B-6744-47FD-B104-A752F72E22B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8972DA49-14B0-4AAD-AA75-D7173FACF9CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8972DA49-14B0-4AAD-AA75-D7173FACF9CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8972DA49-14B0-4AAD-AA75-D7173FACF9CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8972DA49-14B0-4AAD-AA75-D7173FACF9CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7150010-013F-4F69-A857-3D452CDFB250}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7150010-013F-4F69-A857-3D452CDFB250}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7150010-013F-4F69-A857-3D452CDFB250}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7150010-013F-4F69-A857-3D452CDFB250}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2851C6F-9880-4176-B6F8-9A1757EB221B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2851C6F-9880-4176-B6F8-9A1757EB221B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2851C6F-9880-4176-B6F8-9A1757EB221B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2851C6F-9880-4176-B6F8-9A1757EB221B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D09D13C3-00A1-444F-88AC-6D58EA5FED06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D09D13C3-00A1-444F-88AC-6D58EA5FED06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D09D13C3-00A1-444F-88AC-6D58EA5FED06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D09D13C3-00A1-444F-88AC-6D58EA5FED06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3D6154B-6744-47FD-B104-A752F72E22B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3D6154B-6744-47FD-B104-A752F72E22B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3D6154B-6744-47FD-B104-A752F72E22B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3D6154B-6744-47FD-B104-A752F72E22B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

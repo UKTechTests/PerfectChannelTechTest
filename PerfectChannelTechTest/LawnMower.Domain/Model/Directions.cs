@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LawnMower.Domain.Models
+namespace LawnMower.Domain.Model
 {
-    class Coordinate
+    public enum Directions
     {
+        North = 1,
+        East = 2,
+        South = 3,
+        West = 4
     }
 }
