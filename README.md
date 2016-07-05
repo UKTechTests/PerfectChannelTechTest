@@ -1,7 +1,9 @@
 I gave myself 4 hours to get as much done as I could.
 Because of my visual impairment I am slower than other developers as it takes me longer to flip between the spec and the code.
 
-I have not fully completed the solution.
+I have not fully completed the solution, nor had time to fully test it.
+From the brief testing I have done my implimentation is not correct and has bugs.
+
 I have left out lawn perimeter awareness.
 Input validation.  Not all the code is covered by unit tests.
 It took me a little while to get my head around the possible solution before I began coding which took up some time.
