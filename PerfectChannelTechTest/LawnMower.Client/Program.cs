@@ -30,7 +30,7 @@ namespace LawnMower.Client
 
             do
             {
-                Console.Write("Enter lawnmower starting position separated by spaces (2 2 N: ");
+                Console.Write("Enter lawnmower starting position separated by spaces (2 2 N); ");
                 var lawnMowerPosition = Console.ReadLine();
                 //TODO: Validate input respond with warning if necessary.
 
@@ -58,7 +58,8 @@ namespace LawnMower.Client
             
                 //TODO: Iterate through lawnmowers and print out positions.
 
-            Console.WriteLine("Press any key to exit.");
+            Console.WriteLine("Press Enter to exit.");
+            Console.ReadLine();
         }
     }
 }

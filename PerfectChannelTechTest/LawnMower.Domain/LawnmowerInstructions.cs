@@ -105,32 +105,35 @@ namespace LawnMower.Domain
 
         public GeoCoordinate ExecuteInstructions(LawnMowerModel lawnmower)
         {
-            foreach(var movement in lawnmower.Instructions)
+            foreach (var movement in lawnmower.Instructions)
             {
-                switch (movement)
-                {
-                    case 'L':
-                        {
-                            lawnmower.Direction = ChangeDirection("L", lawnmower.Direction);
-                            break;
-                        }
-                    case 'R':
-                        {
-                            lawnmower.Direction = ChangeDirection("R", lawnmower.Direction);
-                            break;
-                        }
-                    default:
-                        {
-                            MoveForward(lawnmower);
-                            break;
-                        }
-                }
-
-                return lawnmower.Position;
-
+                ExecuteInstruction(lawnmower, movement);
             }
 
             return lawnmower.Position;
+        }
+
+        private void ExecuteInstruction(LawnMowerModel lawnmower, char movement)
+        {
+            //TODO:  given more time I would have done this differently.
+            switch (movement)
+            {
+                case 'L':
+                    {
+                        lawnmower.Direction = ChangeDirection("L", lawnmower.Direction);
+                        break;
+                    }
+                case 'R':
+                    {
+                        lawnmower.Direction = ChangeDirection("R", lawnmower.Direction);
+                        break;
+                    }
+                default:
+                    {
+                        MoveForward(lawnmower);
+                        break;
+                    }
+            }
         }
 
         public void AddLawnmowerToGrid(string lawnMowerPosition, string lawnmowerMovements)
