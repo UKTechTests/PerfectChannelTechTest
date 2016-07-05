@@ -6,7 +6,7 @@ using LawnMower.Domain.Model;
 namespace LawnMower.Domain.Tests
 {
     [TestClass]
-    public class LawnMower_DirectionTestFixture
+    public class LawnConfiguration_DirectionTestFixture
     {
         [TestMethod]
         public void Ensure_Lawnmower_ChangeDirection_L_Returns_West_For_Current_Direction_North()

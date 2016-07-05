@@ -57,8 +57,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Lawnmower-MovementTestFixture.cs" />
-    <Compile Include="LawnMower_DirectionTestFixture.cs" />
+    <Compile Include="LawnConfiguration-MovementTestFixture.cs" />
+    <Compile Include="LawnConfiguration_DirectionTestFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +69,9 @@
       <Project>{d3d6154b-6744-47fd-b104-a752f72e22b4}</Project>
       <Name>LawnMower.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LawnConfiguration\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

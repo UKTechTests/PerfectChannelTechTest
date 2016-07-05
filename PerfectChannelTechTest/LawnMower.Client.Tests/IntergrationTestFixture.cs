@@ -5,14 +5,11 @@ using LawnMower.Client;
 namespace LawnMower.Client.Tests
 {
     [TestClass]
-    public class InstructionsTestFixture
+    public class IntergrationTestFixture
     {
-        [TestMethod]
+        //[TestMethod]
         public void TestMethod1()
         {
-            var instructions = new Instructions();
-
-            
 
         }
     }
