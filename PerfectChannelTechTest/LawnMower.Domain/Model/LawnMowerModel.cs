@@ -10,7 +10,8 @@ namespace LawnMower.Domain.Model
     public class LawnMowerModel
     {
         public Directions Direction { get; set; }
-
+        public char[] Instructions { get; internal set; }
         public GeoCoordinate Position { get; set; }
+        
     }
 }

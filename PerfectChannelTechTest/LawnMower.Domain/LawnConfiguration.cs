@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LawnMower.Domain
 {
-    public class Lawn
+    public class LawnConfiguration
     {
         public double LawnArea { get; set; }
 

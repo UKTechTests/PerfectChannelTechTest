@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 
 namespace LawnMower.Domain
 {
-    public class LawnMower
+    public class LawnmowerInstructions
     {
         private IDictionary<Directions, Action> LawnmowerMovementStratergy;
 
         private IDictionary<Directions, Func<Directions>> LawnmowerDirectionStratergy;
-        
+
+        public IList<LawnMowerModel> lawnmowers = new List<LawnMowerModel>();
                 
         public LawnMowerModel MoveForward(LawnMowerModel lawnmower)
         {
@@ -101,6 +102,87 @@ namespace LawnMower.Domain
             });
             return currentDirection;
         }
+
+        public GeoCoordinate ExecuteInstructions(LawnMowerModel lawnmower)
+        {
+            foreach(var movement in lawnmower.Instructions)
+            {
+                switch (movement)
+                {
+                    case 'L':
+                        {
+                            lawnmower.Direction = ChangeDirection("L", lawnmower.Direction);
+                            break;
+                        }
+                    case 'R':
+                        {
+                            lawnmower.Direction = ChangeDirection("R", lawnmower.Direction);
+                            break;
+                        }
+                    default:
+                        {
+                            MoveForward(lawnmower);
+                            break;
+                        }
+                }
+
+                return lawnmower.Position;
+
+            }
+
+            return lawnmower.Position;
+        }
+
+        public void AddLawnmowerToGrid(string lawnMowerPosition, string lawnmowerMovements)
+        {
+            //TODO: validate input.for both arguments.
+            var positions = lawnMowerPosition.Split(' ');
+            var latitude = int.Parse(positions[0]);  //Fragile with more time would do differently
+            var longitude = int.Parse(positions[1]); //Fragile with more time would do differently
+            var direction = positions[2]; //Fragile with more time would do differently
+
+            var lawnmower = new LawnMowerModel()
+            {
+                Position = new GeoCoordinate(latitude, longitude),
+                Direction = GetDirection(direction),
+                Instructions = lawnmowerMovements.ToCharArray()
+            };
+
+            lawnmowers.Add(lawnmower);
+        }
+    
+
+        private Directions GetDirection(string direction)
+        {
+            var result = Directions.North;
+
+            switch (direction.ToUpper())
+            {
+                case "E":
+                    {
+                        result = Directions.East;
+                        break;
+                    }
+                case "S":
+                    {
+                        result = Directions.South;
+                        break;
+                    }
+                case "W":
+                    {
+                        result = Directions.West;
+                        break;
+                    }
+                default:
+                    {
+                        result = Directions.North;
+                        break;
+                    }
+            }
+
+            return result;
+        }
+    
 
         private void CreateLawnmowerMovementStratergy(LawnMowerModel lawnmower)
         {

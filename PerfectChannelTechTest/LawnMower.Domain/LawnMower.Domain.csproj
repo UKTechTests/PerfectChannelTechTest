@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Lawn.cs" />
-    <Compile Include="LawnMower.cs" />
+    <Compile Include="LawnConfiguration.cs" />
+    <Compile Include="LawnmowerInstructions.cs" />
     <Compile Include="Model\Directions.cs" />
     <Compile Include="Model\LawnMowerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
